@@ -11,7 +11,7 @@ vignette: >
 
 ### StochKit2R User Guide
 Kevin R. Sanft
-January 2018
+May 2018
 
 This document provides usage instructions for StochKit2R.
 
@@ -129,7 +129,7 @@ You will need to install the devtools package first, if you haven’t already.
 		CXX=/usr/local/clang4/bin/clang++
 		LDFLAGS=-L/usr/local/clang4/lib
 (Where /usr/local/ is replaced with your path to the clang4 directory, if different.)
-4. In R, run: devtools::install_github("kevinsanft/StochKit2R")
+4. In R, run: devtools::install_github("StochKit2R/StochKit2R")
 
 If everything worked correctly, you may see some warning messages but you should see no errors. You should also be able to scroll up to view the compilation commands to confirm that the clang4 compiler and –fopenmp were used in the compile commands.
 
@@ -146,9 +146,9 @@ To install the package from .zip file:
 
 ## Running a simulation
 
-StochKit2R contains three primary simulation functions: ssa, ssaSingle, and tauLeaping.
+StochKit2R contains three primary stochastic simulation functions: ssa, ssaSingle, and tauLeaping.
 
-ssa and tauLeaping run ensembles (multiple simulation trajectories) and output data at regularly spaced intervals. They have nearly identical function calls. Consult the help pages for information. Here are the key arguments:
+ssa and tauLeaping run ensembles (multiple simulation trajectories) and output data at regularly spaced time intervals. They have nearly identical function calls. Consult the help pages for information. Here are the key arguments:
 
 * modelFile: the path to the StochKit2 xml model file.
 * time: the simulation time. Each simulation will run from 0 to time.
@@ -168,7 +168,7 @@ model = system.file("dimer_decay.xml",package="StochKit2R")
 # now, run a simulation:
 out = ssa(modelFile=model,time=10,realizations=100,intervals=20)
 ```
-The above function will run 100 simulations to time 10 using 20 output intervals (21 output times, including the initial t=0 population). The returned list of data frames will be stored in the variable named out. The above example uses the dimer_decay.xml file included with the StochKit2R distribution. This file is also available for download at http://www.kevinsanft.com/StochKit2R/dimer_decay.xml.
+The above function will run 100 simulations to time 10 using 20 output intervals (21 output times, including the initial time=0 population). The returned list of data frames will be stored in the variable named out. The above example uses the dimer_decay.xml file included with the StochKit2R distribution.
 
 In the more typical case, the model file will be stored elsewhere in your file system. For example:
 ```{r, eval=FALSE}
@@ -186,7 +186,6 @@ ode runs a simulation of a model using the corresponding population form of the 
 ```{r, eval=FALSE}
 out = ode(system.file("dimer_decay.xml",package="StochKit2R"),time=10,intervals=20)
 ```
-
 
 ## Plotting
 
@@ -264,6 +263,10 @@ WARNING: the expression must be a valid __C++__ expression, not an R expression!
 NOTE: In order for the above PropensityFunction to be valid, species S1 and S2 must be defined and *should* be listed as Reactants in the Reaction. The expression in the PropensityFunction must be a valid expression composed of arithmetic operators (+,‐ ,*,/), species Id values, Parameters, and some C++ functions (e.g. pow, exp). Careless use of customized propensity functions can lead to errors and can cause StochKit2 to crash. “mass‐action” is the preferred Reaction Type.
 
 There is an example model file named schlogl.xml that includes both mass-action and customized propensity functions that you can access in the same way the dimer_decay.xml file was accessed above. (The schlogl model is a toy model with one species that displays bimodality--try running an ensemble to time=10 and keep trajectories or histogram data.) Note that the customized propensity functions could evaluate to negative values (for example if S1=0)--this will cause unexpected behavior (and likely crash StochKit2R). Negative propensities are unlikely for the Schlogl model (because the population tends to stay large) but this issue can cause serious problems in other models. It is possible to prevent negative values, see the FAQ section below. Again, “mass‐action” is the preferred Reaction Type--use customized propensities at your own risk.
+
+## Writing/reading stochastic ensemble data to/from files
+
+You can save your ensemble stochastic simulation data (from ssa or tauLeaping) to a directory using writeEnsembleData. Data written to file can be read back in to R using readEnsembleData.
 
 ## Bugs/FAQ
 

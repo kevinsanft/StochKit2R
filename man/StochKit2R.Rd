@@ -11,12 +11,12 @@ provides functions for generating plots of the simulation data.
 }
 \section{Simulation functions}{
 
-There are three simulation functions: ssa, ssaSingle and tauLeaping. 
+There are three stochastic simulation functions: ssa, ssaSingle and tauLeaping. 
 ssa and tauLeaping run ensembles (many simulations) and store output at uniformly
 spaced time intervals. By default they store means and variances, but trajectories
 and histogram data can also be stored. ssaSingle runs a single trajectory and
-stores a row of output for every reaction event that occurs.  Consult the individual
-function help functions or the User Manual vignette for more information.
+stores a row of output for every reaction event that occurs. There is also a differential equation function: ode.  Consult the individual
+function help pages or the User Manual vignette for more information.
 }
 
 \section{Plotting functions}{
@@ -26,3 +26,6 @@ For plotting stats, trajectories, and histogram data. Consult the individual fun
 or the User Manual vignette for more information.
 }
 
+\section{File I/O}{
+There are also functions for writing and reading stochastic simulation data to/from files. See ?writeEnsembleData and ?readEnsembleData for information. 
+}
