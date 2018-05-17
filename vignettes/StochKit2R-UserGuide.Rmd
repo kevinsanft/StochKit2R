@@ -128,7 +128,7 @@ You will need to install the devtools package first, if you haven’t already.
 		CC=/usr/local/clang4/bin/clang  
 		CXX=/usr/local/clang4/bin/clang++  
 		LDFLAGS=-L/usr/local/clang4/lib  
-(Where /usr/local/ is replaced with your path to the clang4 directory, if different.)
+		(Where /usr/local/ is replaced with your path to the clang4 directory, if different.)
 4. In R, run: devtools::install_github("StochKit2R/StochKit2R")
 
 If everything worked correctly, you may see some compilation warning messages but you should see no errors. You should also be able to scroll up to view the compilation commands to confirm that the clang4 compiler and –fopenmp were used in the compile commands.
@@ -292,8 +292,12 @@ You can save your ensemble stochastic simulation data (from ssa or tauLeaping) t
   <PropensityFunction>std::max(R2/6.0*S1*(S1-1)*(S1-2),(double)0.0)</PropensityFunction>
   ```
   Note the function is "std::max" and that the value 0 is forced to be a double to ensure the compiler knows the types.
-  
-5. My simulation crashes without any helpful messages.
+
+5. Installation appears to hang when installing from source on Windows.
+
+  + Very slow or failed installation has been observed when trying to install the BH package, which is required by StochKit2R. BH is a large package (over 100 MB). Slow or failed installation seems more likely to occur on machines with a networked file system and/or systems where the user does not have admin access. You can attempt to install the BH package separately. Perhaps store your R package library on a local hard disk as described here: https://stackoverflow.com/questions/31272280/installation-of-r-package-bh-not-possible. 
+
+6. My simulation crashes without any helpful messages.
 
   + StochKit2R might not "fail gracefully" if an error occurs while running in parallel. The most likely cause of a crash is a problem in a customized propensity function; for example, a function that can evaluate to a negative value or that can have a positive value when a Reactant is 0 (causing a negative population). Carefully check your custom propensities for these conditions.
   

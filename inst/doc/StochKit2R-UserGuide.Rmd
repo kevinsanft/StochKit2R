@@ -11,7 +11,7 @@ vignette: >
 
 ### StochKit2R User Guide
 Kevin R. Sanft
-January 2018
+May 2018
 
 This document provides usage instructions for StochKit2R.
 
@@ -44,7 +44,7 @@ As of this writing, StochKit2R is available on CRAN, the Comprehensive R Archive
 install.packages("StochKit2R")
 ```
 -->
-StochKit2R is available on github. (It it NOT available on CRAN.) See installation instructions below.
+StochKit2R is available on github. (It it currently NOT available on CRAN.) See installation instructions below.
 
 ### Windows and Mac: binary installation (recommended)
 
@@ -69,7 +69,7 @@ install.packages("devtools") #run once on your system
 devtools::install_github("StochKit2R/StochKit2R")
 ```
 
-(Note: on Windows, the above code will ask you to install additional tools. You must install the tools. After installing the tools, you may need to rerun the call to devtools::install_github("StochKit2R/StochKit2R").) 
+(Note: on Windows, the above code will ask you to install additional tools. You must install the tools. You will get a message saying installation failed because it could not find the build tools. After installing the tools, rerun the call to devtools::install_github("StochKit2R/StochKit2R") to install StochKit2R.) 
 
 You may see some compilation warning messages but there should be no errors. After successful installation, load and attach the package with:
 ```{r, eval=FALSE}
@@ -124,14 +124,14 @@ You will need to install the devtools package first, if you haven’t already.
 -->
 1. Download the Mac clang binary with OpenMP support (as of this writing, the current file is http://r.research.att.com/libs/clang-4.0.0-darwin15.6-Release.tar.gz) from http://r.research.att.com/libs/.
 2. Unpack the .tar.gz file. Copy the clang4 directory to your /usr/local/ directory.
-3. Create (or edit your existing) ~/.R/Makevars file to include the following lines:
-		CC=/usr/local/clang4/bin/clang
-		CXX=/usr/local/clang4/bin/clang++
-		LDFLAGS=-L/usr/local/clang4/lib
-(Where /usr/local/ is replaced with your path to the clang4 directory, if different.)
-4. In R, run: devtools::install_github("kevinsanft/StochKit2R")
+3. Create (or edit your existing) ~/.R/Makevars file to include the following lines:  
+		CC=/usr/local/clang4/bin/clang  
+		CXX=/usr/local/clang4/bin/clang++  
+		LDFLAGS=-L/usr/local/clang4/lib  
+		(Where /usr/local/ is replaced with your path to the clang4 directory, if different.)
+4. In R, run: devtools::install_github("StochKit2R/StochKit2R")
 
-If everything worked correctly, you may see some warning messages but you should see no errors. You should also be able to scroll up to view the compilation commands to confirm that the clang4 compiler and –fopenmp were used in the compile commands.
+If everything worked correctly, you may see some compilation warning messages but you should see no errors. You should also be able to scroll up to view the compilation commands to confirm that the clang4 compiler and –fopenmp were used in the compile commands.
 
 <!--
 **Windows**
@@ -146,9 +146,9 @@ To install the package from .zip file:
 
 ## Running a simulation
 
-StochKit2R contains three primary simulation functions: ssa, ssaSingle, and tauLeaping.
+StochKit2R contains three primary stochastic simulation functions: ssa, ssaSingle, and tauLeaping.
 
-ssa and tauLeaping run ensembles (multiple simulation trajectories) and output data at regularly spaced intervals. They have nearly identical function calls. Consult the help pages for information. Here are the key arguments:
+ssa and tauLeaping run ensembles (multiple simulation trajectories) and output data at regularly spaced time intervals. They have nearly identical function calls. Consult the help pages for information. Here are the key arguments:
 
 * modelFile: the path to the StochKit2 xml model file.
 * time: the simulation time. Each simulation will run from 0 to time.
@@ -168,13 +168,13 @@ model = system.file("dimer_decay.xml",package="StochKit2R")
 # now, run a simulation:
 out = ssa(modelFile=model,time=10,realizations=100,intervals=20)
 ```
-The above function will run 100 simulations to time 10 using 20 output intervals (21 output times, including the initial t=0 population). The returned list of data frames will be stored in the variable named out. The above example uses the dimer_decay.xml file included with the StochKit2R distribution. This file is also available for download at http://www.kevinsanft.com/StochKit2R/dimer_decay.xml.
+The above function will run 100 simulations to time 10 using 20 output intervals (21 output times, including the initial time=0 population). The returned list of data frames will be stored in the variable named out. The above example uses the dimer_decay.xml file included with the StochKit2R distribution.
 
 In the more typical case, the model file will be stored elsewhere in your file system. For example:
 ```{r, eval=FALSE}
 out = ssa("~/Desktop/dimer_decay.xml",10,100,20)
 ```
-The file dimer_decay.xml must exist in the ~/Desktop directory. (This corresponds to a machine-specific full path such as "/Users/kevinsanft/Desktop/dimer_decay.xml", which might be required on some systems. On Windows, "~" usually corresponds to the user's Documents folder, so ~/Desktop would not be a valid path.)
+The file dimer_decay.xml must exist in the ~/Desktop directory. You can copy it there using: file.copy(model,"~/Desktop/dimer_decay.xml"), where model is defined as above. (This corresponds to a machine-specific full path such as "/Users/kevinsanft/Desktop/dimer_decay.xml", which might be required on some systems. On Windows, "~" usually corresponds to the user's Documents folder, so ~/Desktop would not be a valid path.)
 
 ssaSingle runs a single trajectory and outputs a row of data for every reaction event that occurs to a file. The function takes as arguments: a path to a StochKit2 .xml model and a simulation end time. Here is the example from the documentation, using the dimer_decay.xml model that is included with the StochKit2R package:
 ```{r, eval=FALSE}
@@ -186,7 +186,6 @@ ode runs a simulation of a model using the corresponding population form of the 
 ```{r, eval=FALSE}
 out = ode(system.file("dimer_decay.xml",package="StochKit2R"),time=10,intervals=20)
 ```
-
 
 ## Plotting
 
@@ -265,6 +264,10 @@ NOTE: In order for the above PropensityFunction to be valid, species S1 and S2 m
 
 There is an example model file named schlogl.xml that includes both mass-action and customized propensity functions that you can access in the same way the dimer_decay.xml file was accessed above. (The schlogl model is a toy model with one species that displays bimodality--try running an ensemble to time=10 and keep trajectories or histogram data.) Note that the customized propensity functions could evaluate to negative values (for example if S1=0)--this will cause unexpected behavior (and likely crash StochKit2R). Negative propensities are unlikely for the Schlogl model (because the population tends to stay large) but this issue can cause serious problems in other models. It is possible to prevent negative values, see the FAQ section below. Again, “mass‐action” is the preferred Reaction Type--use customized propensities at your own risk.
 
+## Writing/reading stochastic ensemble data to/from files
+
+You can save your ensemble stochastic simulation data (from ssa or tauLeaping) to a directory using writeEnsembleData. Data written to file can be read back in to R using readEnsembleData.
+
 ## Bugs/FAQ
 
 1. How do I create a model file?
@@ -289,8 +292,12 @@ There is an example model file named schlogl.xml that includes both mass-action 
   <PropensityFunction>std::max(R2/6.0*S1*(S1-1)*(S1-2),(double)0.0)</PropensityFunction>
   ```
   Note the function is "std::max" and that the value 0 is forced to be a double to ensure the compiler knows the types.
-  
-5. My simulation crashes without any helpful messages.
+
+5. Installation appears to hang when installing from source on Windows.
+
+  + Very slow or failed installation has been observed when trying to install the BH package, which is required by StochKit2R. BH is a large package (over 100 MB). Slow or failed installation seems more likely to occur on machines with a networked file system and/or systems where the user does not have admin access. You can attempt to install the BH package separately. Perhaps store your R package library on a local hard disk as described here: https://stackoverflow.com/questions/31272280/installation-of-r-package-bh-not-possible. 
+
+6. My simulation crashes without any helpful messages.
 
   + StochKit2R might not "fail gracefully" if an error occurs while running in parallel. The most likely cause of a crash is a problem in a customized propensity function; for example, a function that can evaluate to a negative value or that can have a positive value when a Reactant is 0 (causing a negative population). Carefully check your custom propensities for these conditions.
   
