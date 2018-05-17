@@ -44,7 +44,7 @@ As of this writing, StochKit2R is available on CRAN, the Comprehensive R Archive
 install.packages("StochKit2R")
 ```
 -->
-StochKit2R is available on github. (It it NOT available on CRAN.) See installation instructions below.
+StochKit2R is available on github. (It it currently NOT available on CRAN.) See installation instructions below.
 
 ### Windows and Mac: binary installation (recommended)
 
@@ -69,7 +69,7 @@ install.packages("devtools") #run once on your system
 devtools::install_github("StochKit2R/StochKit2R")
 ```
 
-(Note: on Windows, the above code will ask you to install additional tools. You must install the tools. After installing the tools, you may need to rerun the call to devtools::install_github("StochKit2R/StochKit2R").) 
+(Note: on Windows, the above code will ask you to install additional tools. You must install the tools. You will get a message saying installation failed because it could not find the build tools. After installing the tools, rerun the call to devtools::install_github("StochKit2R/StochKit2R") to install StochKit2R.) 
 
 You may see some compilation warning messages but there should be no errors. After successful installation, load and attach the package with:
 ```{r, eval=FALSE}
@@ -124,14 +124,14 @@ You will need to install the devtools package first, if you haven’t already.
 -->
 1. Download the Mac clang binary with OpenMP support (as of this writing, the current file is http://r.research.att.com/libs/clang-4.0.0-darwin15.6-Release.tar.gz) from http://r.research.att.com/libs/.
 2. Unpack the .tar.gz file. Copy the clang4 directory to your /usr/local/ directory.
-3. Create (or edit your existing) ~/.R/Makevars file to include the following lines:
-		CC=/usr/local/clang4/bin/clang
-		CXX=/usr/local/clang4/bin/clang++
-		LDFLAGS=-L/usr/local/clang4/lib
+3. Create (or edit your existing) ~/.R/Makevars file to include the following lines:  
+		CC=/usr/local/clang4/bin/clang  
+		CXX=/usr/local/clang4/bin/clang++  
+		LDFLAGS=-L/usr/local/clang4/lib  
 (Where /usr/local/ is replaced with your path to the clang4 directory, if different.)
 4. In R, run: devtools::install_github("StochKit2R/StochKit2R")
 
-If everything worked correctly, you may see some warning messages but you should see no errors. You should also be able to scroll up to view the compilation commands to confirm that the clang4 compiler and –fopenmp were used in the compile commands.
+If everything worked correctly, you may see some compilation warning messages but you should see no errors. You should also be able to scroll up to view the compilation commands to confirm that the clang4 compiler and –fopenmp were used in the compile commands.
 
 <!--
 **Windows**
@@ -174,7 +174,7 @@ In the more typical case, the model file will be stored elsewhere in your file s
 ```{r, eval=FALSE}
 out = ssa("~/Desktop/dimer_decay.xml",10,100,20)
 ```
-The file dimer_decay.xml must exist in the ~/Desktop directory. (This corresponds to a machine-specific full path such as "/Users/kevinsanft/Desktop/dimer_decay.xml", which might be required on some systems. On Windows, "~" usually corresponds to the user's Documents folder, so ~/Desktop would not be a valid path.)
+The file dimer_decay.xml must exist in the ~/Desktop directory. You can copy it there using: file.copy(model,"~/Desktop/dimer_decay.xml"), where model is defined as above. (This corresponds to a machine-specific full path such as "/Users/kevinsanft/Desktop/dimer_decay.xml", which might be required on some systems. On Windows, "~" usually corresponds to the user's Documents folder, so ~/Desktop would not be a valid path.)
 
 ssaSingle runs a single trajectory and outputs a row of data for every reaction event that occurs to a file. The function takes as arguments: a path to a StochKit2 .xml model and a simulation end time. Here is the example from the documentation, using the dimer_decay.xml model that is included with the StochKit2R package:
 ```{r, eval=FALSE}
