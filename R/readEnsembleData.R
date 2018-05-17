@@ -27,7 +27,7 @@ readEnsembleData <- function(outputDir) {
   if (!file.exists(outputDir)) {
     stop("ERROR: outputDir does not exist")
   }
-  out=list(stats=list(),trajectories=list(),histograms=list())
+  out=list(stats=list(means=data.frame(),variances=data.frame()),trajectories=list(),histograms=list())
     
   # see what subdirectories we have
   subdirs = dir(outputDir)

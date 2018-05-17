@@ -25,10 +25,15 @@
 #'}
 histogramDistance <- function(data1,species1,timeIndex1=NULL,data2,species2,timeIndex2=NULL) {
   
-  if (is.null(data1$histograms)) {
-    stop("data1 does not contain histograms element. Run ensemble with keepHistograms=TRUE.")
+  # if (is.null(data1$histograms)) {
+  #   stop("data1 does not contain histograms element. Run ensemble with keepHistograms=TRUE.")
+  # }
+  
+  if (length(data1$histograms)==0) {
+    stop("data1 does not contain histogram data. Run ensemble with keepHistograms=TRUE.")
   }
   
+    
   if (!(class(species1)=="integer" || class(species1)=="numeric" || class(species1)=="character")) {
     stop("species1 must be a species name or index")
   }
@@ -95,8 +100,12 @@ histogramDistance <- function(data1,species1,timeIndex1=NULL,data2,species2,time
   df1 <- data.frame(centers=bincenters1,counts=data1)
 
   # second histogram
-  if (is.null(data2$histograms)) {
-    stop("data2 does not contain histograms element. Run ensemble with keepHistograms=TRUE.")
+  # if (is.null(data2$histograms)) {
+  #   stop("data2 does not contain histograms element. Run ensemble with keepHistograms=TRUE.")
+  # }
+  
+  if (length(data2$histograms)==0) {
+    stop("data2 does not contain histogram data. Run ensemble with keepHistograms=TRUE.")
   }
   
   if (!(class(species2)=="integer" || class(species2)=="numeric" || class(species2)=="character")) {

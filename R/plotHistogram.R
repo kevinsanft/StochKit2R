@@ -18,8 +18,12 @@
 #'}
 plotHistogram <- function(data,species,timeIndex=NULL) {
   
-  if (is.null(data$histograms)) {
-    stop("data does not contain histograms element. Run ensemble with keepHistograms=TRUE.")
+  # if (is.null(data$histograms)) {
+  #   stop("data does not contain histograms element. Run ensemble with keepHistograms=TRUE.")
+  # }
+  
+  if (length(data$histograms)==0) {
+    stop("data does not contain histogram data. Run ensemble with keepHistograms=TRUE.")
   }
   
   if (!(class(species)=="integer" || class(species)=="numeric" || class(species)=="character")) {

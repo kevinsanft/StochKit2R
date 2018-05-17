@@ -46,10 +46,10 @@ writeEnsembleData <- function(data,outputDir,force=FALSE,indexStart=1) {
     if (dir=="trajectories") {
       realizations = length(data$trajectories)
       indexOffset = indexStart-1
-      cat("indexOffset=",indexOffset)
+      #cat("indexOffset=",indexOffset)
       for (i in 1:realizations) {
         index=i+indexOffset
-        cat("index=",index)
+        #cat("index=",index)
         filename = paste("trajectory",index,".txt",sep="")
         write.table(data$trajectories[[i]],file=file.path(outputDir,dir,filename),sep="\t",quote=F,row.names=F)
       }

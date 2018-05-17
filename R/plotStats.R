@@ -19,10 +19,13 @@
 #'}
 plotStats <- function(data,species=NULL) {
 
-  if (is.null(data$stats)) {
-    stop("data does not contain stats element.")
+  # if (is.null(data$stats)) {
+  #   stop("data does not contain stats element.")
+  # }
+  if (nrow(data$stats$means)==0) {
+    stop("data is missing stats information. Run ensemble with noStats=FALSE.")
   }
-  
+    
   if (!is.null(species)) {
     if (! (class(species)=="character" || class(species)=="numeric" || class(species)=="integer")) {
       stop("Species must be a character vector of species names or a numeric vector")

@@ -18,9 +18,13 @@
 #'}
 plotTrajectories <- function(data,trajectoryIndexes=NULL,species=NULL) {
   
-  if (is.null(data$trajectories)) {
-    stop("data does not contain trajectories element. Run ensemble with keepTrajectories=TRUE.")
-  }
+  # if (is.null(data$trajectories)) {
+  #   stop("data does not contain trajectories element. Run ensemble with keepTrajectories=TRUE.")
+  # }
+
+  if (length(data$trajectories)==0) {
+    stop("trajectories element of input data has length 0. Run ensemble with keepTrajectories=TRUE.")
+  }  
   
   # checks on trajectoryIndexes
   if (!is.null(trajectoryIndexes)) {

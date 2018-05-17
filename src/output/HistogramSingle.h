@@ -440,10 +440,11 @@ public:
     } 
   }
 
+     //StochKit2R: use index start of 1 instead of 0!
 	 std::vector<std::string> fileDataAsString(std::vector<double> outputTimes, std::string speciesID) const {
 		 std::vector<std::string> outdat;//(1);
 			 // time index and species index
-		 std::string str = speciesID +"\t"+ to_string_macro(outputTimes[_timeIndex]) + "\t"+ to_string_macro(_speciesIndex) +"\t"+to_string_macro(_timeIndex);
+		 std::string str = speciesID +"\t"+ to_string_macro(outputTimes[_timeIndex]) + "\t"+ to_string_macro(_speciesIndex+1) +"\t"+to_string_macro(_timeIndex+1);
 		 outdat.push_back(str);
 			 // other necessary information
 		 str =  to_string_macro(_lowerBound)+"\t"+to_string_macro(_upperBound)+"\t"+to_string_macro(_width)+"\t"+to_string_macro(_size)+"\t"+to_string_macro(_inverseWidth);
