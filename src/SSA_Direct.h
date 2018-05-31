@@ -455,6 +455,9 @@ namespace STOCHKIT
                 Rcpp::Rcout << "StochKit WARNING (SSA_Direct::selectStepSize): propensitySum<0, returning step size=infinity\n";
                 return std::numeric_limits<double>::infinity();
             }
+            if (propensitySum==0) {
+                return std::numeric_limits<double>::infinity();
+            }
         }
         
         return randomGenerator.exponential(propensitySum);
@@ -480,6 +483,17 @@ namespace STOCHKIT
         previousReactionIndex=-1;
         if (stepsSinceCalculateAllPropensities>maxStepsCalculateAllPropensities) {
             calculateAllPropensities();
+        }
+        
+        //check for 0 propensity sum
+        if (propensitySum<=0) {
+            //if negative, may be due to numerical error
+            if (propensitySum<0) {
+                calculateAllPropensities();
+            }
+            if (propensitySum<=0) {
+                return -1;
+            }
         }
         
         //generate a uniform random number between (0,propensitySum)

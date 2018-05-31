@@ -36,8 +36,8 @@ double Random::continuousUniform(double a, double b)
 // mean = 1/rate
 double Random::exponential(double rate)
 {
-    if (rate==0.0) {
-        return(0.0);
+    if (rate<=0.0) {
+        return std::numeric_limits<double>::infinity();
     }
     else {
         boost::exponential_distribution<> exponentialDistribution(rate);
