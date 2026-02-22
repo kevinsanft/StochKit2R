@@ -20,13 +20,13 @@
 #'\dontrun{
 #'#example using included dimer_decay.xml file
 #'#store path to StochKit2R dimer_decay.xml file in a variable
-#'model <- system.file("dimer_decay.xml",package="StochKit2R")
-#'out <- tauLeaping(modelFile=model,time=10,realizations=100,intervals=20)
+#'model <- system.file("dimer_decay.xml", package="StochKit2R")
+#'out <- tauLeaping(modelFile=model, time=10, realizations=100, intervals=20)
 #'
 #'#more typical example where model file is stored elsewhere
 #'#(must be valid path to existing .xml StochKit2 model file)
 #'#also, keep trajectory data
-#'out <- tauLeaping("Desktop/dimer_decay.xml",10,100,20,keepTrajectories=TRUE)
+#'out <- tauLeaping("Desktop/dimer_decay.xml", 10, 100, 20, keepTrajectories=TRUE)
 #'}
 tauLeaping <- function(modelFile,time,realizations,intervals=0,noStats=FALSE,keepTrajectories=FALSE,keepHistograms=FALSE,bins=32,seed=NULL,p=0,epsilon=0.03,threshold=10) {
   # can set seed in R with set.seed()

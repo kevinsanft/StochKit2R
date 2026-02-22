@@ -1,4 +1,6 @@
 #ignore workspace image
 .Rhistory
-
-
+*.o
+*.dll
+/doc/
+/Meta/

@@ -59,15 +59,16 @@ namespace STOCHKIT
 			taking two values of the same type than those contained in the range, 
 			returns true if the first argument goes before the second argument, 
 			and false otherwise. 
-    */
-    class ValueGreater :
-        public std::binary_function<FireFrenquencyRecord, FireFrenquencyRecord, bool> {
-    public:
-        bool operator()(const FireFrenquencyRecord& x, const FireFrenquencyRecord& y) const {
-            return x.fireFrequency > y.fireFrequency;
-        }
-    };
-	
+	*/
+	// disabled to test removal of deprecated `std::binary_function` inheritance
+	// class ValueGreater : public std::binary_function<FireFrenquencyRecord, FireFrenquencyRecord, bool> {
+	class ValueGreater {
+		public:
+			bool operator() (const FireFrenquencyRecord& x, const FireFrenquencyRecord& y) const {
+				return x.fireFrequency > y.fireFrequency;
+			}
+	};
+
 	//! the vector to record the reactions' firing frequency
 	std::vector<FireFrenquencyRecord> FrequencyVector;\
 	//!the vector to record the old index for current index

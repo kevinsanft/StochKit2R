@@ -22,6 +22,6 @@ Data frame containing time and species population
 \examples{
 \dontrun{
 #example using included dimer_decay.xml file
-out <- ode(system.file("dimer_decay.xml",package="StochKit2R"),time=10,intervals=20)
+out <- ode(system.file("dimer_decay.xml", package="StochKit2R"), time=10, intervals=20)
 }
 }

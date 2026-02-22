@@ -4,9 +4,19 @@
 \alias{ssaStochKit2RInterface}
 \title{C++ Interface to Gillespie Stochastic Simulation Algorithm}
 \usage{
-ssaStochKit2RInterface(StochKit2Rmodel, time, realizations, intervals,
-  keepStats, keepTrajectories, keepHistograms, bins, outputDirNameString, seed,
-  p)
+ssaStochKit2RInterface(
+  StochKit2Rmodel,
+  time,
+  realizations,
+  intervals,
+  keepStats,
+  keepTrajectories,
+  keepHistograms,
+  bins,
+  outputDirNameString,
+  seed,
+  p
+)
 }
 \arguments{
 \item{StochKit2Rmodel}{R list (Rcpp List built from buildStochKit2Rmodel output)}

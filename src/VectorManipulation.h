@@ -25,7 +25,7 @@ _vectorType vectorDifference(_vectorType src, _vectorType dest)
 	_vectorType difference;
 	difference.clear();
 
-	typedef typename _vectorType::value_type _memberType;
+	// typedef typename _vectorType::value_type _memberType;
 	typedef typename _vectorType::iterator _iterator;
 	_iterator src_it, dest_it;
 
@@ -105,7 +105,7 @@ template<typename _srcVectorType,
 	 typename _destVectorType>
 bool mergeToSortedArray(_srcVectorType src, _destVectorType& dest)
 {
-	typedef typename _srcVectorType::value_type _srcMemberType;
+	// typedef typename _srcVectorType::value_type _srcMemberType;
 	typedef typename _destVectorType::value_type _destMemberType;
 
 	// make sure dest is a sorted vector if it's not empty

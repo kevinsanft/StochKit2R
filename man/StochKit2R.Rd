@@ -2,29 +2,32 @@
 % Please edit documentation in R/StochKit2R.R
 \docType{package}
 \name{StochKit2R}
-\alias{StochKit2R}
 \alias{StochKit2R-package}
-\title{StochKit2R: a package for efficient discrete stochastic simulation using the Gillepie Algorithm (SSA) and tau-leaping}
+\alias{StochKit2R}
+\title{StochKit2R}
 \description{
-The package provides an R interface to stochastic simulation functions and 
+StochKit2R: a package for efficient discrete stochastic simulation
+using the Gillespie Algorithm (SSA) and tau-leaping. The package
+provides an R interface to stochastic simulation functions and
 provides functions for generating plots of the simulation data.
 }
-\section{Simulation functions}{
-
-There are three stochastic simulation functions: ssa, ssaSingle and tauLeaping. 
-ssa and tauLeaping run ensembles (many simulations) and store output at uniformly
-spaced time intervals. By default they store means and variances, but trajectories
-and histogram data can also be stored. ssaSingle runs a single trajectory and
-stores a row of output for every reaction event that occurs. There is also a function
-named ode that solves the population form of reaction rate equations.
-Consult the individual function help pages or the User Manual vignette for more
-information.
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/kevinsanft/StochKit2R}
+  \item \url{http://www.kevinsanft.com/StochKit2R}
+  \item Report bugs at \url{https://github.com/kevinsanft/StochKit2R/issues}
 }
 
-\section{Plotting functions}{
+}
+\author{
+\strong{Maintainer}: Kevin R. Sanft \email{kevin@kevinsanft.com} [copyright holder]
 
-There are four plotting functions: plotStats, plotTrajectories, plotHistogram, and histogramDistance 
-For plotting stats, trajectories, and histogram data. Consult the individual function help functions
-or the User Manual vignette for more information.
+Other contributors:
+\itemize{
+  \item Harris Joseph [contributor]
+  \item John Ravi [contributor]
+  \item Linda R. Petzold [copyright holder]
 }
 
+}

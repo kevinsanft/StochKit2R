@@ -2,7 +2,7 @@
 # Generator token: 10BE3573-1514-4C36-9D1C-5A225CD40393
 
 customPropensitySubstitution <- function(originalString, originalParametersList, originalSpeciesList) {
-    .Call('_StochKit2R_customPropensitySubstitution', PACKAGE = 'StochKit2R', originalString, originalParametersList, originalSpeciesList)
+    .Call(`_StochKit2R_customPropensitySubstitution`, originalString, originalParametersList, originalSpeciesList)
 }
 
 #'@title C++ Interface to Gillespie Stochastic Simulation Algorithm single trajectory
@@ -15,7 +15,7 @@ customPropensitySubstitution <- function(originalString, originalParametersList,
 #'@return Dataframe containing the time and population sizes
 #'@keywords internal
 odecpp <- function(StochKit2Rmodel, endTime, intervals) {
-    .Call('_StochKit2R_odecpp', PACKAGE = 'StochKit2R', StochKit2Rmodel, endTime, intervals)
+    .Call(`_StochKit2R_odecpp`, StochKit2Rmodel, endTime, intervals)
 }
 
 #'@title C++ Interface to Gillespie Stochastic Simulation Algorithm single trajectory
@@ -31,7 +31,7 @@ odecpp <- function(StochKit2Rmodel, endTime, intervals) {
 #'@return Dataframe containing the time and population sizes
 #'@keywords internal
 ssaSingleStochKit2RInterface <- function(StochKit2Rmodel, startTime, endTime, outputFileNameString, seed) {
-    .Call('_StochKit2R_ssaSingleStochKit2RInterface', PACKAGE = 'StochKit2R', StochKit2Rmodel, startTime, endTime, outputFileNameString, seed)
+    .Call(`_StochKit2R_ssaSingleStochKit2RInterface`, StochKit2Rmodel, startTime, endTime, outputFileNameString, seed)
 }
 
 #'@title C++ Interface to Gillespie Stochastic Simulation Algorithm
@@ -53,7 +53,7 @@ ssaSingleStochKit2RInterface <- function(StochKit2Rmodel, startTime, endTime, ou
 #'@return List of means, variances, and trajectories
 #'@keywords internal
 ssaStochKit2RInterface <- function(StochKit2Rmodel, time, realizations, intervals, keepStats, keepTrajectories, keepHistograms, bins, outputDirNameString, seed, p) {
-    .Call('_StochKit2R_ssaStochKit2RInterface', PACKAGE = 'StochKit2R', StochKit2Rmodel, time, realizations, intervals, keepStats, keepTrajectories, keepHistograms, bins, outputDirNameString, seed, p)
+    .Call(`_StochKit2R_ssaStochKit2RInterface`, StochKit2Rmodel, time, realizations, intervals, keepStats, keepTrajectories, keepHistograms, bins, outputDirNameString, seed, p)
 }
 
 #'@title C++ Interface to Explicit Adaptive Tau-Leaping simulation
@@ -77,6 +77,6 @@ ssaStochKit2RInterface <- function(StochKit2Rmodel, time, realizations, interval
 #'@return List containing stats, trajectories and histogramsinst
 #'@keywords internal
 tauLeapingStochKit2RInterface <- function(StochKit2Rmodel, time, realizations, intervals, keepStats, keepTrajectories, keepHistograms, bins, outputDirNameString, seed, p, epsilon, threshold) {
-    .Call('_StochKit2R_tauLeapingStochKit2RInterface', PACKAGE = 'StochKit2R', StochKit2Rmodel, time, realizations, intervals, keepStats, keepTrajectories, keepHistograms, bins, outputDirNameString, seed, p, epsilon, threshold)
+    .Call(`_StochKit2R_tauLeapingStochKit2RInterface`, StochKit2Rmodel, time, realizations, intervals, keepStats, keepTrajectories, keepHistograms, bins, outputDirNameString, seed, p, epsilon, threshold)
 }
 

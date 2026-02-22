@@ -22,10 +22,10 @@ The ggplot object
 \examples{
 \dontrun{
 #example using included dimer_decay.xml file
-model <- system.file("dimer_decay.xml",package="StochKit2R")
+model <- system.file("dimer_decay.xml", package="StochKit2R")
 #output written to ex_out directory (created in current working directory)
-out <- ssa(model,time=10,realizations=100,intervals=20,keepHistograms=TRUE)
+out <- ssa(model, time=10, realizations=100, intervals=20, keepHistograms=TRUE)
 #plot the histogram for species "S2" at time point 5 (t=2.0)
-plotHistogram(out,species="S2",timeIndex=5)
+plotHistogram(out, species="S2", timeIndex=5)
 }
 }

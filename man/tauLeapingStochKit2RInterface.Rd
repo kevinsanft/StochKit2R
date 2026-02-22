@@ -4,9 +4,21 @@
 \alias{tauLeapingStochKit2RInterface}
 \title{C++ Interface to Explicit Adaptive Tau-Leaping simulation}
 \usage{
-tauLeapingStochKit2RInterface(StochKit2Rmodel, time, realizations, intervals,
-  keepStats, keepTrajectories, keepHistograms, bins, outputDirNameString, seed,
-  p, epsilon, threshold)
+tauLeapingStochKit2RInterface(
+  StochKit2Rmodel,
+  time,
+  realizations,
+  intervals,
+  keepStats,
+  keepTrajectories,
+  keepHistograms,
+  bins,
+  outputDirNameString,
+  seed,
+  p,
+  epsilon,
+  threshold
+)
 }
 \arguments{
 \item{StochKit2Rmodel}{R list (Rcpp List built from buildStochKit2Rmodel output)}

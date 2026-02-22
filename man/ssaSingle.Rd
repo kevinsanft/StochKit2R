@@ -22,6 +22,6 @@ Data frame containing time and species population for every reaction event in th
 \examples{
 \dontrun{
 #example using included dimer_decay.xml file
-out <- ssaSingle(system.file("dimer_decay.xml",package="StochKit2R"),time=10)
+out <- ssaSingle(system.file("dimer_decay.xml", package="StochKit2R"), time=10)
 }
 }

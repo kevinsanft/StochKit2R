@@ -125,9 +125,10 @@ RcppExport SEXP ssaSingleStochKit2RInterface(Rcpp::List StochKit2Rmodel,
         buffer.push_back(row);
     }
   }
-  
-  //write buffer to return data 
-  int nr = buffer.size(), nc = buffer[0].size();
+
+  // write buffer to return data 
+  int nr = buffer.size();
+  long long unsigned int nc = buffer[0].size();
   Rcpp::NumericMatrix m( nr, nc );
   for (int i=0; i<nr; i++) {
     std::vector<double>& result_i = buffer[i];
@@ -137,7 +138,7 @@ RcppExport SEXP ssaSingleStochKit2RInterface(Rcpp::List StochKit2Rmodel,
       Rcpp::stop("Fatal error encountered, terminating StochKit2R");
     }
 
-    for (int j=0; j<nc; j++)
+    for (long long unsigned int j=0; j<nc; j++)
       m(i, j) = result_i[j];
   }
 
@@ -146,7 +147,7 @@ RcppExport SEXP ssaSingleStochKit2RInterface(Rcpp::List StochKit2Rmodel,
   Rcpp::CharacterVector col_names;
   col_names.push_back("time");
 
-  for (int i = 0; i < modelSpeciesList.size(); i++)
+  for (long long unsigned int i = 0; i < modelSpeciesList.size(); i++)
     col_names.push_back(modelSpeciesList[i]);
 
   Rcpp::DataFrame df = Rcpp::DataFrame(m);

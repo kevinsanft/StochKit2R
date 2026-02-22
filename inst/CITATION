@@ -1,17 +1,19 @@
 citHeader("To cite StochKit2R in publications, please use:")
 
 citEntry(entry = "Article",
-  author = personList(as.person("Kevin R. Sanft"),
-                    as.person("Sheng Wu"),
-                    as.person("Min Roh"),
-                    as.person("Jin Fu"),
-		    as.person("Rone Kwei Lim"),
-                    as.person("Linda R. Petzold")),
-  title = "StochKit2: software for discrete stochastic simulation of biochemical systems with events",
-  journal = "Bioinformatics",
-  year = "2011",
-  volume="27",
-  number="17",
-  pages="2457--2458",
-  textVersion="Kevin R. Sanft, Sheng Wu, Min Roh, Jin Fu, Rone Kwei Lim, and Linda R. Petzold (2011). StochKit2: software for discrete stochastic simulation of biochemical systems with events. Bioinformatics, 27(17), pp. 2457--2458"
+  	author = personList(
+		as.person("Kevin R. Sanft"),
+        as.person("Sheng Wu"),
+        as.person("Min Roh"),
+        as.person("Jin Fu"),
+		as.person("Rone Kwei Lim"),
+        as.person("Linda R. Petzold")
+	),
+	title = "StochKit2: software for discrete stochastic simulation of biochemical systems with events",
+	journal = "Bioinformatics",
+	year = "2011",
+	volume="27",
+	number="17",
+	pages="2457--2458",
+	textVersion="Kevin R. Sanft, Sheng Wu, Min Roh, Jin Fu, Rone Kwei Lim, and Linda R. Petzold (2011). StochKit2: software for discrete stochastic simulation of biochemical systems with events. Bioinformatics, 27(17), pp. 2457--2458"
 )

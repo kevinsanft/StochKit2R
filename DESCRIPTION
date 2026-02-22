@@ -1,19 +1,32 @@
 Package: StochKit2R
-Type: Package
 Title: Efficient Discrete Stochastic Simulation
-Version: 1.0
-Date: 2018-05-08
-Author: Kevin R. Sanft [aut, cre, cph],
-  Harris Joseph [ctb],
-  John Ravi [ctb],
-  Linda R. Petzold [cph]
-Maintainer: Kevin R. Sanft <kevin@kevinsanft.com>
-Copyright: Kevin R. Sanft, Linda R. Petzold
+Version: 1.1
+Authors@R: c(
+		person("Kevin R.", "Sanft", email = "kevin@kevinsanft.com", role = c("aut", "cre", "cph")),
+		person("Harris", "Joseph", role = "ctb"),
+		person("John", "Ravi", role = "ctb"),
+		person("J.", "Kellem", role = "ctb"),
+		person("Linda R.", "Petzold", role = "cph")
+	)
 Description: Efficient discrete stochastic simulation using the Gillespie algorithm (aka the Stochastic Simulation Algorithm or SSA) and adaptive tau-leaping. It provides an R interface to simulation algorithms and it provides functions for visualizing (plotting) simulation output.
 License: GPL-3
-Imports: Rcpp (>= 0.11.2), reshape, ggplot2, XML, R.utils, RcppXPtrUtils
-LinkingTo: Rcpp, BH
-Suggests: knitr
+URL: https://github.com/kevinsanft/StochKit2R, http://www.kevinsanft.com/StochKit2R
+BugReports: https://github.com/kevinsanft/StochKit2R/issues
+Encoding: UTF-8
+SystemRequirements: C++17
+Depends: R (>= 4.5.0)
+Imports:
+  Rcpp,
+  XML,
+  reshape,
+  ggplot2,
+  R.utils,
+  RcppXPtrUtils
+LinkingTo:
+  Rcpp,
+  BH
+Suggests:
+  rmarkdown,
+  knitr
 VignetteBuilder: knitr
-Packaged: 2015-03-03 19:37:11 UTC; kevinsanft
-RoxygenNote: 6.0.1
+RoxygenNote: 7.3.3

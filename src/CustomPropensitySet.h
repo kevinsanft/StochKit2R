@@ -125,7 +125,7 @@ namespace STOCHKIT
  public:
 	 //convert stochastic propensities into ODE (reaction-rate equation) rates
 	 void convertToODE() {
-		 for (int i=0; i!=propensities_index.size(); i++) {
+		 for (long long unsigned int i=0; i!=propensities_index.size(); i++) {
 			 //check if a mass action (not custom) propensity
 			 if (propensities_index[i].first==0) {
 				 int simple_index=propensities_index[i].second;

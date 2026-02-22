@@ -9,11 +9,11 @@
 #'#'#example using included dimer_decay.xml file
 #'#run 100 simulations for 10 time units, keeping output at 20 time intervals
 #'#store model file name in a variable first
-#'model <- system.file("dimer_decay.xml",package="StochKit2R")
-#'out <- ssa(modelFile=model,time=10,realizations=100,intervals=20)
+#'model <- system.file("dimer_decay.xml", package="StochKit2R")
+#'out <- ssa(modelFile=model, time=10, realizations=100, intervals=20)
 #'#creates ex_out directory and writes output
-#'writeEnsembleData(data=out,outputDir="ex_out")
-#'out2=readEnsembleData("ex_out") #out and out2 should match
+#'writeEnsembleData(data=out, outputDir="ex_out")
+#'out2 <- readEnsembleData("ex_out") #out and out2 should match
 #'}
 readEnsembleData <- function(outputDir) {
 

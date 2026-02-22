@@ -1,8 +1,6 @@
-<?xml version="1.0"?>
-<!-- Stochkit 2.0 text input format -->
+<!-- Stochkit 2.0 text input format
 
-<!--
-  Schlogl model; uses customized propensity functions
+Schlogl model; uses customized propensity functions
 
 reference:
 D.T. Gillespie. Markov Processes: an introduction for physical scientists. Academic Press, San Diego, CA.

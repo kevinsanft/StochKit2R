@@ -4,8 +4,14 @@
 \alias{histogramDistance}
 \title{Plot two StochKit2R simulation histograms and display distance}
 \usage{
-histogramDistance(data1, species1, timeIndex1 = NULL, data2, species2,
-  timeIndex2 = NULL)
+histogramDistance(
+  data1,
+  species1,
+  timeIndex1 = NULL,
+  data2,
+  species2,
+  timeIndex2 = NULL
+)
 }
 \arguments{
 \item{data1}{ensemble output from ssa or tauLeaping (histograms object must exist, i.e. ensemble must have been run with keepHistograms=TRUE).}
@@ -29,14 +35,14 @@ The ggplot object
 \examples{
 \dontrun{
 #example using included dimer_decay.xml file
-model <- system.file("dimer_decay.xml",package="StochKit2R")
+model <- system.file("dimer_decay.xml", package="StochKit2R")
 #output written to ex_out directory (created in current working directory)
-result1 = ssa(model,10,100,20,keepHistograms=TRUE)
+result1 = ssa(model, 10, 100, 20, keepHistograms=TRUE)
 #another ensemble
-result2 = ssa(model,10,100,20,keepHistograms=TRUE)
+result2 = ssa(model, 10, 100, 20, keepHistograms=TRUE)
 #plot the histograms for species 2 ("S2") at time point 5 (t=2.0) for the two runs above
-histogramDistance(result1,"S2",5,result2,"S2",5)
+histogramDistance(result1, "S2", 5, result2, "S2", 5)
 #compare species from the same ensemble at different time points
-histogramDistance(result1,"S2",5,result1,"S2",6) #warning about time mismatch
+histogramDistance(result1, "S2", 5, result1, "S2", 6) #warning about time mismatch
 }
 }
